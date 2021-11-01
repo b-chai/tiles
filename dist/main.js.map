@@ -1,0 +1,1 @@
+{"version":3,"file":"main.js","mappings":"AAAAA,SAASC,iBAAiB,oBAAoB,WAC1CC,QAAQC,IAAI","sources":["webpack://Tiles/./src/index.js"],"sourcesContent":["document.addEventListener('DOMContentLoader', ()=>{\r\n    console.log(\"loaded\")\r\n})"],"names":["document","addEventListener","console","log"],"sourceRoot":""}
