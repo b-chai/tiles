@@ -52,9 +52,28 @@ table {
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/test.css ***!
   \***************************************************************************************************/
-.tile{
-    background-color: blue;
+.red{background-color: red;}
+.blue{background-color: blue;}
+.green{background-color: green;}
+.orange{background-color: orange;}
+
+.divTable{ 
+    display: table; 
 }
+
+.divTableRow{ 
+    display: table-row; 
+}
+
+.tile{ 
+    display: table-cell; 
+    /* background-color: red; */
+    width: 50px;
+    height: 50px;
+    border: 1px white solid;
+    margin: 1px;
+}
+
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/

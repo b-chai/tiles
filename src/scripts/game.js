@@ -1,3 +1,5 @@
+import Tile from './tile.js'
+
 class Game{
     constructor(){
 
@@ -5,15 +7,20 @@ class Game{
 
     createGame(){
         const grid = document.querySelector('.grid')
-        let newDiv = document.createElement('div')
-        newDiv.className = "tile"
-        const num = 5
-
-        grid.appendChild(newDiv)
-        for (let i = 0 ; i < num ; i++){
+        const row = 4
+        const col = 4
+        
+        for (let i = 0 ; i < row ; i++){
+            let seperator = document.createElement("div")
+            seperator.className = "divTableRow"
+            grid.appendChild(seperator)
+            for (let j = 0 ; j < col ; j++ ){
+                const tile = new Tile()
+                seperator.appendChild(tile.randomTile())
+            }
+            
         }
 
-        // document.getElementsByTagName('body').appendChild(grid)
     }
 }
 
