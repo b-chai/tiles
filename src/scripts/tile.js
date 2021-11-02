@@ -6,10 +6,17 @@ class Tile{
         this.player = false
     }
 
+    playerTile(){
+        this.player = true
+        
+        let tile = document.createElement("div")
+        tile.className = `tile ${this.color}`
+        return tile
+    }
+
     randomTile(){
         let tile = document.createElement("div")
         tile.className = `tile ${this.color}`
-        console.log(tile)
         return tile
     }
 }

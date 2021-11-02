@@ -50,7 +50,7 @@ table {
 	border-spacing: 0;
 }
 /*!***************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/test.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/game.css ***!
   \***************************************************************************************************/
 .red{background-color: red;}
 .blue{background-color: blue;}
@@ -67,13 +67,19 @@ table {
 
 .tile{ 
     display: table-cell; 
-    /* background-color: red; */
     width: 50px;
     height: 50px;
     border: 1px white solid;
     margin: 1px;
 }
 
+button{
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    margin: 10px;
+}
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
