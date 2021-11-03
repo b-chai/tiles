@@ -1,8 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
 
 .header-bar{
     display: flex;
     justify-content: space-between;
     font-size: 48px;
     font-family: 'Lato', sans-serif;
+    border-bottom: 2px black solid;
+    padding: 10px 40px;
+    background-color: #EED4B1
+}
+
+.moves{
+    font-size: 36px;
+    margin-top: 8px;
 }

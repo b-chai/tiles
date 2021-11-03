@@ -77,12 +77,23 @@ class Game{
             currentTile.classList.remove("blue", "green", "red", "black")
             currentTile.classList.add("orange")
             this.moves++
+            this.updateMoves()
         }
 
         selector.appendChild(button1)
         selector.appendChild(button2)
         selector.appendChild(button3)
         selector.appendChild(button4)
+    }
+
+    updateMoves(){
+        var moves = document.querySelector('.moves')
+        const count = document.querySelector('.move-count')
+        const create = document.createElement('div')
+        create.className = 'move-count'
+        
+        count.parentNode.removeChild(count)
+        moves.appendChild(create)
     }
 
     findReds(){
