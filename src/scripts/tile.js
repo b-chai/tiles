@@ -2,7 +2,7 @@ class Tile{
     constructor(){
         const TILES = ['red','blue','green','orange']
         const randomColor = Math.floor(Math.random() * TILES.length)
-        
+
         this.color = TILES[randomColor];
         this.player = false
         this.pos = []
@@ -18,8 +18,9 @@ class Tile{
         // starting position
         if(x === 0 && y == 0){
             this.player = true
+            this.color = "black"
+            tile.className = `tile black pos-${x}-${y}`
         }
-        console.log(tile)
         return tile
     }
 }
