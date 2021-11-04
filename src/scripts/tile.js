@@ -23,6 +23,21 @@ class Tile{
         }
         return tile
     }
+
+    updateTile(color){
+        this.color = color
+        this.player = true 
+        
+        const list = ['red','blue','green','orange','black']
+        const currentTile = document.querySelector(`.pos-${this.pos[0]}-${this.pos[1]}`)
+
+        for(let i = 0 ; i < list.length ; i++){
+            let currentColor = list[i]
+            currentTile.classList.remove(currentColor)
+        }
+
+        currentTile.classList.add(color)
+    }
 }
 
 export default Tile

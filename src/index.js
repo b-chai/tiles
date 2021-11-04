@@ -6,3 +6,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     game.createGame(10)
     game.createButtons()
 })
+
+const restart = document.querySelector(".restart")
+restart.addEventListener('click', ()=>{
+    game.reset()
+})

@@ -43,39 +43,34 @@ class Game{
 
         button1.className = 'red'
         button1.onclick = ()=>{
-            playerTile.color = "red"
-            const currentTile = document.querySelector(`.pos-${playerTile.pos[0]}-${playerTile.pos[1]}`)
-            currentTile.classList.remove("blue", "green", "orange", "black")
-            currentTile.classList.add("red")
+            playerTile.updateTile("red")
             this.moves++
+            // incomplete function
             this.findReds()
+            this.updateMoves()
         }
 
         button2.className = 'blue'
         button2.onclick = ()=>{
-            playerTile.color = "blue"
-            const currentTile = document.querySelector(`.pos-${playerTile.pos[0]}-${playerTile.pos[1]}`)
-            currentTile.classList.remove("red", "green", "orange", "black")
-            currentTile.classList.add("blue")
+            playerTile.updateTile("blue")
             this.moves++
+            // incomplete function
             this.findBlues()
+            this.updateMoves()
         }
 
         button3.className = 'green'
         button3.onclick = ()=>{
-            playerTile.color = "green"
-            const currentTile = document.querySelector(`.pos-${playerTile.pos[0]}-${playerTile.pos[1]}`)
-            currentTile.classList.remove("blue", "red", "orange", "black")
-            currentTile.classList.add("green")
+            playerTile.updateTile("green")
             this.moves++
+            this.updateMoves()
+            // incomplete function
+            this.changeColor()
         }
 
         button4.className = 'orange'
         button4.onclick = ()=>{
-            playerTile.color = "orange"
-            const currentTile = document.querySelector(`.pos-${playerTile.pos[0]}-${playerTile.pos[1]}`)
-            currentTile.classList.remove("blue", "green", "red", "black")
-            currentTile.classList.add("orange")
+            playerTile.updateTile("orange")
             this.moves++
             this.updateMoves()
         }
@@ -93,6 +88,7 @@ class Game{
         create.className = 'move-count'
         
         count.parentNode.removeChild(count)
+        create.appendChild(document.createTextNode(`Moves : ${this.moves}`))
         moves.appendChild(create)
     }
 
@@ -104,7 +100,6 @@ class Game{
             let row = this.board[i]
             for (let j = 0 ; j < row.length ; j++){
                 let tile = this.board[i][j]
-                console.log(tile.color)
                 if (tile.color === 'red'){
                     allReds.push(tile)
                 }
@@ -137,8 +132,64 @@ class Game{
                 }
             }
         }
-        console.log(res)
         return res;
+    }
+
+    changeColor(){
+        // starting point
+        let controlledArea = []
+        for (let i = 0 ; i < this.board.length ; i++){
+            let current = this.board[0]
+            for (let j = 0 ; j < current.length ; j++){
+                let tile = this.board[i][j]
+                if(tile.player === true) controlledArea.push(tile)
+            }
+        }
+        // check adjacent tiles
+        // this.checkAdjacent(1,1)
+        for (let i = 0 ; i < controlledArea.length; i++){
+            let tile = controlledArea[i]
+            let x = tile.pos[0]
+            let y = tile.pos[1]
+            this.checkAdjacent(x,y) // return array
+        }
+        // change tile
+    }
+
+    checkAdjacent(x,y){
+        const col = this.board.length - 1;
+        const row = this.board[0].length - 1;
+
+        // return all adjacent tiles N-E-S-W
+        // [N,E,S,W] = [0,1,2,3]
+
+        let n = 0
+        let e = 0
+        let s = 0
+        let w = 0
+
+        if (x > 0) n = this.board[x-1][y];
+        if (y < col) e = this.board[x][y+1];
+        if (x < row) s = this.board[x+1][y];
+        if (y > 0) w = this.board[x][y-1];
+
+        const adjacent = [n,e,s,w]
+        // let arr = []
+        // for(let i = 0 ; i < adjacent.length; i++){
+        //     if (adjacent[i].color === 'red'){
+        //         arr.push(adjacent[i])
+        //     }
+        // }
+
+        return adjacent
+    }
+
+    reset(){
+        this.board = []
+        this.moves = 0
+        const game = document.querySelector(".game")
+        game.parentNode.removeChild(game)
+        this.createGame(10)
     }
 }
 
