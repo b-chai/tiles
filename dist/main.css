@@ -1,4 +1,10 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap);
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/reset.css ***!
+  \****************************************************************************************************/
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -53,6 +59,9 @@ table {
 body{
 	background: #F7EBDB;
 }
+/*!***************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/game.css ***!
+  \***************************************************************************************************/
 .red{background-color: red;}
 .blue{background-color: blue;}
 .green{background-color: green;}
@@ -87,6 +96,9 @@ button{
     border: none;
     border-radius: 50%;
 }
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/header.css ***!
+  \*****************************************************************************************************/
 
 
 .header-bar{
@@ -103,6 +115,9 @@ button{
     font-size: 36px;
     margin-top: 8px;
 }
+/*!**************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/app.css ***!
+  \**************************************************************************************************/
 .app{
     display: flex;
     justify-content: space-around;
@@ -111,7 +126,7 @@ button{
 }
 
 .game{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .grid{
@@ -143,11 +158,14 @@ button{
     margin-top: -100px;
 }
 
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/footer.css ***!
+  \*****************************************************************************************************/
 .footer-links{
     display: flex;
     position: fixed;
     bottom: 0px;
-    margin: 20px;
+    margin-left: 50px;
 }
 
 .linkedin{
@@ -158,6 +176,7 @@ button{
 .github{
     margin-bottom: 40px;
 }
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
+  \*****************************************************************************************************************************************/
 
-
-/*# sourceMappingURL=main.css.map*/
