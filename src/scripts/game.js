@@ -45,18 +45,20 @@ class Game{
         button1.onclick = ()=>{
             playerTile.updateTile("red")
             this.moves++
-            // incomplete function
-            this.findReds()
             this.updateMoves()
+            this.updatePlayerTiles('red')
+            this.updateClusters('red')
+            console.log(this.board)
         }
 
         button2.className = 'blue'
         button2.onclick = ()=>{
             playerTile.updateTile("blue")
             this.moves++
-            // incomplete function
-            this.findBlues()
             this.updateMoves()
+            this.updatePlayerTiles('blue')
+            this.updateClusters('blue')
+            console.log(this.board)
         }
 
         button3.className = 'green'
@@ -64,8 +66,9 @@ class Game{
             playerTile.updateTile("green")
             this.moves++
             this.updateMoves()
-            // incomplete function
-            this.changeColor()
+            this.updatePlayerTiles('green')
+            this.updateClusters('green')
+            console.log(this.board)
         }
 
         button4.className = 'orange'
@@ -73,6 +76,9 @@ class Game{
             playerTile.updateTile("orange")
             this.moves++
             this.updateMoves()
+            this.updatePlayerTiles('orange')
+            this.updateClusters('orange')
+            console.log(this.board)
         }
 
         selector.appendChild(button1)
@@ -92,96 +98,99 @@ class Game{
         moves.appendChild(create)
     }
 
-    findReds(){
+    updateClusters(color){
+        let row = 0
+        let col = 0
+        let piece = this.board[row][col]
+        let tilesToBeChecked = [piece]
+        let allColors = [piece]
+        let visited = new Set().add(`${row}-${col}`)
 
-        let allReds = []
+        const boardMap = () => {
+            let visitedMap = new Array(this.board.length);
 
-        for (let i = 0 ; i < this.board.length ; i++){
-            let row = this.board[i]
-            for (let j = 0 ; j < row.length ; j++){
-                let tile = this.board[i][j]
-                if (tile.color === 'red'){
-                    allReds.push(tile)
+            for (let i = 0; i < visitedMap.length; i++) {
+                visitedMap[i] = new Array();
+                for(let j = 0 ; j < visitedMap.length; j++){
+                    visitedMap[i][j] = false
                 }
             }
-        }
-        
-        console.log(allReds)
-    }
 
-    findBlues(){
-        const m = this.board.length;
-        const n = this.board[0].length;
-        let res = 0;
-        // start at 1 (land), search for a 0 or out of bounds in every direction (water)
-        const dfs = (i, j) => {
-            if (i<0 || i===m || j<0 || j===n || this.board[i][j].color ==='red' || this.board[i][j].color ==='green' || this.board[i][j].color==='orange') return;
-            this.board[i][j]='0'; // choose
-            dfs(i+1, j);
-            dfs(i-1, j);
-            dfs(i, j+1);
-            dfs(i, j-1);
-            // we don't unchoose bc we use these vals to avoid double counting later
+            return visitedMap
         }
-    
-        for (let i=0;i<m;i++) {
-            for (let j=0;j<n;j++) {
-                if (this.board[i][j].color ==='blue') {
-                    dfs(i,j);
-                    res++; // after dfs, we have hit water and made an island. leave the flipped vals so we don't double count and increment res
+
+        let falseMap = boardMap()
+
+        const checkNeighbors = (row,col,colorChosen,visited) =>{
+            let dirs = [[1,0],[0,1],[-1,0],[0,-1]];
+            let neighbors = [];
+            for (let i = 0 ; i <dirs.length ; i++){
+                let newX = row + dirs[i][0]
+                let newY = col + dirs[i][1]
+                
+                if (newX >= 0 && newX < this.board.length && newY >= 0 && newY < this.board[0].length) {
+                    if (!visited[newX][newY]){
+                        if (this.board[newX][newY].color === colorChosen){
+                            let current = [newX,newY]
+                            neighbors.push([newX,newY]);
+                            visited[newX][newY] = true
+                        }
+                    }
                 }
             }
+            let tileArray = neighbors.map(pos => this.board[pos[0]][pos[1]])
+            return tileArray
         }
-        return res;
-    }
 
-    changeColor(){
-        // starting point
-        let controlledArea = []
-        for (let i = 0 ; i < this.board.length ; i++){
-            let current = this.board[0]
-            for (let j = 0 ; j < current.length ; j++){
-                let tile = this.board[i][j]
-                if(tile.player === true) controlledArea.push(tile)
-            }
-        }
-        // check adjacent tiles
-        // this.checkAdjacent(1,1)
-        for (let i = 0 ; i < controlledArea.length; i++){
-            let tile = controlledArea[i]
+        while (tilesToBeChecked.length){
+            let tile = tilesToBeChecked.shift();
             let x = tile.pos[0]
             let y = tile.pos[1]
-            this.checkAdjacent(x,y) // return array
+            visited.add(`${row}-${col}`)
+            let neighbors = checkNeighbors(x,y,color,falseMap);
+            allColors = allColors.concat(neighbors);
+            tilesToBeChecked = tilesToBeChecked.concat(neighbors)
         }
-        // change tile
+
+        const result = (arr,color) => {
+            for (let i = 0 ; i < arr.length ; i++){
+                let currentTile = arr[i]
+                currentTile.updateTile(color)
+            }
+        }
+
+        return result(allColors,color)
     }
 
-    checkAdjacent(x,y){
-        const col = this.board.length - 1;
-        const row = this.board[0].length - 1;
+    updatePlayerTiles(color){
+        for(let i = 0 ; i < this.board.length ; i++){
+            let currentRow = this.board[i]
+            for (let j = 0 ; j < currentRow.length ; j++){
+                let currentTile = currentRow[j]
+                if(currentTile.player === true){
+                    currentTile.updateTile(color)
+                }
+            }
+        }
+    }
 
-        // return all adjacent tiles N-E-S-W
-        // [N,E,S,W] = [0,1,2,3]
+    checkWin(){
+        for(let i = 0 ; i < this.board.length ; i++){
+            let currentRow = this.board[i]
+            for (let j = 0 ; j < currentRow.length ; j++){
+                let currentTile = currentRow[j]
+                if(currentTile.player === false){
+                    return false
+                }
+            }
+        }
+        return true
+    }
 
-        let n = 0
-        let e = 0
-        let s = 0
-        let w = 0
-
-        if (x > 0) n = this.board[x-1][y];
-        if (y < col) e = this.board[x][y+1];
-        if (x < row) s = this.board[x+1][y];
-        if (y > 0) w = this.board[x][y-1];
-
-        const adjacent = [n,e,s,w]
-        // let arr = []
-        // for(let i = 0 ; i < adjacent.length; i++){
-        //     if (adjacent[i].color === 'red'){
-        //         arr.push(adjacent[i])
-        //     }
-        // }
-
-        return adjacent
+    gameOver(){
+        if (this.checkWin()){
+            
+        }
     }
 
     reset(){
