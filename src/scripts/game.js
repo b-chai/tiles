@@ -200,6 +200,7 @@ class Game{
         game.parentNode.removeChild(game)
         this.createGame(10)
     }
+
 }
 
 export default Game

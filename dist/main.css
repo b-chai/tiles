@@ -126,7 +126,7 @@ button{
 }
 
 .game{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .grid{
@@ -158,6 +158,60 @@ button{
     margin-top: -100px;
 }
 
+.tutorial{
+    position: absolute;
+    background-color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 10%;
+    width: 50vw;
+    height: 80vh;
+    background-color: #fcce97;
+    -webkit-box-shadow: 5px 10px 20px 10px rgba(0,0,0,0.75); 
+    box-shadow: 5px 10px 20px 10px rgba(0,0,0,0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.x{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 48px;
+    font-family: 'Lato', sans-serif;
+    padding: 10px;
+    text-decoration: none;
+    color:black;
+}
+
+.close{
+    width: 100px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    border: 1px black solid;
+    cursor: pointer;
+}
+
+.lock3{
+    text-decoration: none;
+    color: black;
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: flex;
+}
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/footer.css ***!
   \*****************************************************************************************************/
