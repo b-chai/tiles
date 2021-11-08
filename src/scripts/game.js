@@ -194,11 +194,19 @@ class Game{
     }
 
     reset(){
-        this.board = []
         this.moves = 0
-        const game = document.querySelector(".game")
-        game.parentNode.removeChild(game)
-        this.createGame(10)
+        this.updateMoves()
+
+        const game = document.querySelector(".divTable")
+        const oldGame = document.querySelector(".grid")
+        
+        let newGame = document.createElement('div')
+        newGame.className = 'grid'
+        
+
+        game.removeChild(oldGame)
+        game.appendChild(newGame)
+        this.createGame(14)
     }
 
 }
