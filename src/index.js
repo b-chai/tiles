@@ -12,6 +12,22 @@ restart.addEventListener('click', ()=>{
     game.reset()
 })
 
+const replay = document.querySelector(".replay")
+replay.addEventListener('click', ()=>{
+    const scoreboard = document.querySelector('.show2')
+
+    function toggle(){
+        if (scoreboard.className === 'show2'){
+            scoreboard.className = 'hidden2'
+        }else{
+            scoreboard.className = 'show2'
+        }
+    }
+    toggle()
+    game.reset()
+})
+
+
 const instruction = document.querySelector('.lock')
 instruction.addEventListener('click',()=>{
     const hidden = document.querySelector(('#instructions'))

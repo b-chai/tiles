@@ -48,7 +48,7 @@ class Game{
             this.updateMoves()
             this.updatePlayerTiles('red')
             this.updateClusters('red')
-            console.log(this.board)
+            this.gameOver()
         }
 
         button2.className = 'blue'
@@ -58,7 +58,7 @@ class Game{
             this.updateMoves()
             this.updatePlayerTiles('blue')
             this.updateClusters('blue')
-            console.log(this.board)
+            this.gameOver()
         }
 
         button3.className = 'green'
@@ -68,7 +68,7 @@ class Game{
             this.updateMoves()
             this.updatePlayerTiles('green')
             this.updateClusters('green')
-            console.log(this.board)
+            this.gameOver()
         }
 
         button4.className = 'orange'
@@ -78,7 +78,7 @@ class Game{
             this.updateMoves()
             this.updatePlayerTiles('orange')
             this.updateClusters('orange')
-            console.log(this.board)
+            this.gameOver()
         }
 
         selector.appendChild(button1)
@@ -188,8 +188,21 @@ class Game{
     }
 
     gameOver(){
+        let parent = document.querySelector('.insert')
+        let hidden = document.querySelector('.hidden2')
+
+        let oldScore = document.querySelector('.final-score')
+        
         if (this.checkWin()){
-            
+            let score = document.createElement('div')
+            score.className = 'final-score'
+
+            // remove old score before adding new score
+            if (oldScore) parent.removeChild(oldScore);
+
+            parent.appendChild(score)
+            score.appendChild(document.createTextNode(`Score : ${this.moves}`))
+            hidden.className = "show2"
         }
     }
 
