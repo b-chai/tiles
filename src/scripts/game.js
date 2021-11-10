@@ -1,10 +1,12 @@
 import Tile from './tile.js'
+// import db from './firebase.js'
 
 class Game{
     constructor(){
 
         this.board = []
         this.moves = 0
+        
     }
 
     createGame(num){
@@ -222,6 +224,46 @@ class Game{
         this.createGame(14)
     }
 
+    saveScore() {
+        // Get name from input box
+        let name = document.getElementsByClassName('name').value;
+    
+        // Make sure name has a value, if not send alert.
+        if(name !== "") {
+            // Add a new document in collection "scores"
+            db.collection("scores").doc().set({
+                name: name,
+                score: this.moves
+            })
+            .then(function() {
+                console.log("Document successfully written!");
+                updateScores();
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        } else {
+            alert('Please enter a name');
+        }
+    }
+
+    updateScores() {
+        // Clear current scores in our scoreboard
+        document.getElementsByClassName('scoreboard').innerHTML = '<tr><th>Name</th><th>Score</th></tr>';
+       
+        // Get the top 5 scores from our scoreboard
+        // Default ascending order
+        db.collection("scores").orderBy("score").limit(5).get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                document.getElementById('scoreboard').innerHTML += '<tr>' +
+                '<td>' + doc.data().name + '</td>' +
+                '<td>' + doc.data().score + '</td>' +
+                '</tr>';
+            })
+        })
+
+
+    }
 }
 
 export default Game

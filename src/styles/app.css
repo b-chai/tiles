@@ -19,7 +19,7 @@
     align-items: center;
 }
 
-.score-list{
+.scoreboard{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,7 @@
     margin: 20px;
 }
 
-.score-list>.score{
+.scoreboard>.score{
     margin-top: 20px;
 }
 
@@ -138,4 +138,13 @@
     font-family: 'Lato', sans-serif;
     border-bottom: black 5px solid;
     margin: 50px
+}
+
+.name{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 20px;
 }

@@ -28,7 +28,7 @@
         </a>
     </div>
 
-    <div class="hidden" id="instructions">
+    <div class="show" id="instructions">
         <div class="tutorial" style="display: flex">
             <div>
                 Instructions
@@ -79,11 +79,11 @@
             <div class="color-buttons"> </div>
 
         </div>
-        <div class="score-list">
+        <div class="scoreboard">
             <div class="hi-score">
                 High Scores
             </div>
-            <div class="score">
+            <!-- <div class="score">
                 10
             </div>
             <div class="score">
@@ -97,7 +97,7 @@
             </div>
             <div class="score">
                 50
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -108,6 +108,7 @@
             </div> -->
 
             <div class="insert"></div>
+            <input type="text" class="name" placeholder="Name">
             <div class="score-bottom">
                 <div class="close">
                     Submit Score
@@ -130,6 +131,12 @@
     </div>
 
     <!-- <script type="module" src="./src/index.js"></script> -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <!-- Import Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <!-- Import our JavaScript file -->
 
     <script src="./dist/main.js"></script>
 </body>

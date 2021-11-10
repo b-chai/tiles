@@ -96,6 +96,10 @@ button{
     border: none;
     border-radius: 50%;
 }
+
+button:hover{
+    cursor: pointer;
+}
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/header.css ***!
   \*****************************************************************************************************/
@@ -140,7 +144,7 @@ button{
     align-items: center;
 }
 
-.score-list{
+.scoreboard{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -150,7 +154,7 @@ button{
     margin: 20px;
 }
 
-.score-list>.score{
+.scoreboard>.score{
     margin-top: 20px;
 }
 
@@ -260,6 +264,15 @@ button{
     border-bottom: black 5px solid;
     margin: 50px
 }
+
+.name{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 20px;
+}
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/footer.css ***!
   \*****************************************************************************************************/
@@ -277,6 +290,17 @@ button{
 
 .github{
     margin-bottom: 40px;
+}
+/*!*******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/tutorial.css ***!
+  \*******************************************************************************************************/
+.tutorial{
+    font-size: 24px;
+}
+
+.tutorial > div:first-child{
+    font-size: 48px;
+    text-decoration: underline;
 }
 /*!*****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
