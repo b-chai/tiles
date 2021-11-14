@@ -1,8 +1,8 @@
 import Game from "./scripts/game";
 
-const game = new Game(8);
+const game = new Game(10);
 document.addEventListener("DOMContentLoaded", () => {
-  // hard = 14 medium = 8 easy = 5
+  // hard = 14 medium = 10 easy = 5
   game.createGame();
   game.createButtons();
 });
@@ -76,7 +76,7 @@ easy.addEventListener("click", () => {
 })
 const normal = document.querySelector('.normal')
 normal.addEventListener("click", () => {
-  game.difficulty = 8
+  game.difficulty = 10
   game.reset()
 })
 const hard = document.querySelector('.hard')
