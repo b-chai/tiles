@@ -1,11 +1,10 @@
 import Game from "./scripts/game";
 
-const game = new Game();
+const game = new Game(8);
 document.addEventListener("DOMContentLoaded", () => {
   // hard = 14 medium = 8 easy = 5
-  game.createGame(14);
+  game.createGame();
   game.createButtons();
-  game.updateScores();
 });
 
 const restart = document.querySelector(".restart");
@@ -69,3 +68,19 @@ instruction3.addEventListener("click", () => {
   }
   toggle();
 });
+
+const easy = document.querySelector('.easy')
+easy.addEventListener("click", () => {
+  game.difficulty = 5
+  game.reset()
+})
+const normal = document.querySelector('.normal')
+normal.addEventListener("click", () => {
+  game.difficulty = 8
+  game.reset()
+})
+const hard = document.querySelector('.hard')
+hard.addEventListener("click", () => {
+  game.difficulty = 14
+  game.reset()
+})

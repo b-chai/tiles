@@ -2,17 +2,17 @@ import Tile from './tile.js'
 // import db from './firebase.js'
 
 class Game{
-    constructor(){
+    constructor(num){
 
         this.board = []
         this.moves = 0
-        
+        this.difficulty = num
     }
 
-    createGame(num){
+    createGame(){
         const grid = document.querySelector('.grid')
-        const row = num
-        const col = num
+        const row = this.difficulty
+        const col = this.difficulty
 
         let gridArray = []
         
@@ -221,7 +221,7 @@ class Game{
 
         game.removeChild(oldGame)
         game.appendChild(newGame)
-        this.createGame(14)
+        this.createGame(this.difficulty)
     }
 
     saveScore() {

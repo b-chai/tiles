@@ -273,6 +273,22 @@ button:hover{
     right: 0;
     margin-bottom: 20px;
 }
+
+.level{
+    width: 100px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    border: 1px black solid;
+    cursor: pointer;
+    text-align: center;
+}
+
+.level:hover{
+    background-color: orange;
+}
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/footer.css ***!
   \*****************************************************************************************************/
@@ -283,13 +299,11 @@ button:hover{
     margin-left: 50px;
 }
 
-.linkedin{
-    margin-top: 30px;
-    margin-right: 50px;
+.linkedin>a{
+    margin-bottom: 40px;
 }
 
 .github{
-    margin-bottom: 40px;
 }
 /*!*******************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/tutorial.css ***!
